@@ -1,0 +1,24 @@
+@model LivrariaFDevs.Models.Categoria
+
+@{
+    ViewData["Title"] = "Excluir Categoria";
+}
+
+<div class="container mt-3">
+    <h3>Excluir Categoria</h3>
+
+    <div class="card shadow-sm p-3">
+        <div class="mb-3">
+            <p>Tem certeza que deseja excluir a categoria:</p>
+            <h5>@Model.Nome</h5>
+        </div>
+
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="d-flex gap-2">
+                <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-danger">Excluir</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+@model IEnumerable<LivrariaFDevs.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold mb-0">Categorias</h2>
+        <a asp-action="Create" class="btn btn-primary">
+            ➕ Nova Categoria
+        </a>
+    </div>
+
+    @if (TempData["Erro"] != null)
+    {
+        <div class="alert alert-warning">
+            @TempData["Erro"]
+        </div>
+    }
+
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Nome</th>
+                        <th style="width: 220px;">Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var c in Model)
+                    {
+                        <tr>
+                            <td class="fw-semibold">@c.Nome</td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@c.Id" class="btn btn-sm btn-outline-secondary me-1">
+                                    Ver
+                                </a>
+                                <a asp-action="Edit" asp-route-id="@c.Id" class="btn btn-sm btn-outline-primary me-1">
+                                    Editar
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@c.Id" class="btn btn-sm btn-outline-danger">
+                                    Excluir
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

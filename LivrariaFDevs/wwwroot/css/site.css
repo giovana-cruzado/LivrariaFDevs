@@ -12,3 +12,47 @@ body { background: #fff; }
 .card { max-width: 100%; }
 
 .navbar-brand { letter-spacing: -0.5px; }
+
+:root {
+    --bs-primary: #a259ff !important;   /* Roxo moderno */
+    --bs-primary-rgb: 162, 89, 255 !important;
+}
+
+/* Botões */
+.btn-primary {
+    background-color: #a259ff !important;
+    border-color: #a259ff !important;
+}
+
+.btn-outline-primary {
+    color: #a259ff !important;
+    border-color: #a259ff !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: #a259ff !important;
+    border-color: #a259ff !important;
+    color: white !important;
+}
+
+/* Navbar link ativo */
+.nav-link.active,
+.nav-link:hover {
+    color: #a259ff !important;
+}
+
+/* Tabela header */
+.table-primary {
+    background-color: #a259ff !important;
+    border-color: #a259ff !important;
+    color: white !important;
+}
+
+/* Links azuis → roxo */
+a {
+    color: #a259ff;
+}
+a:hover {
+    color: #9224ff;
+}
+

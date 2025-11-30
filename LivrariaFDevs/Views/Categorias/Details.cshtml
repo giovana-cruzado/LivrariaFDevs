@@ -1,0 +1,24 @@
+@model LivrariaFDevs.Models.Categoria
+
+@{
+    ViewData["Title"] = "Detalhes da Categoria";
+}
+
+<div class="container mt-3">
+    <h3>Detalhes</h3>
+
+    <div class="card shadow-sm p-3">
+        <dl class="row">
+            <dt class="col-sm-3">Id</dt>
+            <dd class="col-sm-9">@Model.Id</dd>
+
+            <dt class="col-sm-3">Nome</dt>
+            <dd class="col-sm-9">@Model.Nome</dd>
+        </dl>
+
+        <div class="d-flex gap-2">
+            <a asp-action="Index" class="btn btn-outline-secondary">Voltar</a>
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
+        </div>
+    </div>
+</div>
