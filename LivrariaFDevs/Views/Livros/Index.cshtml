@@ -1,0 +1,27 @@
+@model IEnumerable<LivrariaFDevs.Models.Livro>
+
+<h1>Livros</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Novo Livro</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Categoria</th>
+            <th>Preço</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var livro in Model)
+        {
+            <tr>
+                <td>@livro.Titulo</td>
+                <td>@livro.Categoria?.Nome</td>
+                <td>@livro.Preco.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
