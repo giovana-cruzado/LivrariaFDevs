@@ -1,29 +1,35 @@
+using LivrariaFDevs.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? "server=localhost;user=root;password=senha;database=LivrariaFDevsDb;";
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+using (var scope = app.Services.CreateScope())
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.EnsureCreated();
+
+    if (!db.Categorias.Any())
+    {
+        db.Categorias.Add(new LivrariaFDevs.Models.Categoria { Nome = "Geral" });
+        db.SaveChanges();
+    }
 }
 
-app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseRouting();
-
-app.UseAuthorization();
-
-app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
-
+    pattern: "{controller=Livros}/{action=Index}/{id?}");
 
 app.Run();
