@@ -28,7 +28,7 @@
                 <div class="col-md-6">
                     <label class="form-label fw-semibold">Categoria</label>
                     <select asp-for="CategoriaId" class="form-select">
-                        <option value="">-- selecione --</option>
+                        <option value="">Selecione</option>
                         @foreach (var c in categorias)
                         {
                             <option value="@c.Id">@c.Nome</option>
