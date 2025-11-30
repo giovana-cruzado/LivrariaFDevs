@@ -1,5 +1,6 @@
 using LivrariaFDevs.Data;
 using Microsoft.EntityFrameworkCore;
+using LivrariaFDevs.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,14 @@ using (var scope = app.Services.CreateScope())
 
     if (!db.Categorias.Any())
     {
-        db.Categorias.Add(new LivrariaFDevs.Models.Categoria { Nome = "Geral" });
+        db.Categorias.AddRange(new[]
+        {
+            new Categoria { Nome = "Geral" },
+            new Categoria { Nome = "Romance" },
+            new Categoria { Nome = "Tecnologia" },
+            new Categoria { Nome = "Programação" }
+        });
+
         db.SaveChanges();
     }
 }
