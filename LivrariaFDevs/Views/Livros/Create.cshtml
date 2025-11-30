@@ -1,35 +1,49 @@
+@using LivrariaFDevs.Models
 @model LivrariaFDevs.Models.Livro
+
 @{
-    var categorias = ViewBag.Categorias as List<LivrariaFDevs.Models.Categoria> ?? new();
+    var categorias = ViewBag.Categorias as List<Categoria> ?? new();
 }
 
-<h1>Cadastrar Livro</h1>
-
-<form method="post">
-    <div class="mb-3">
-        <label class="form-label">Título</label>
-        <input asp-for="Titulo" class="form-control" />
-        <span asp-validation-for="Titulo" class="text-danger"></span>
+<div class="container mt-5">
+    <div class="mb-4">
+        <h1 class="fw-bold">➕ Cadastrar Livro</h1>
+        <p class="text-muted">Preencha os dados abaixo para adicionar um livro à livraria.</p>
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Preço</label>
-        <input asp-for="Preco" class="form-control" />
-    </div>
+    <div class="card shadow-sm">
+        <div class="card-body p-4">
+            <form method="post" class="row g-3">
+                <div class="col-12">
+                    <label class="form-label fw-semibold">Título</label>
+                    <input asp-for="Titulo" class="form-control" placeholder="Digite o nome do livro" />
+                    <span asp-validation-for="Titulo" class="text-danger"></span>
+                </div>
 
-    <div class="mb-3">
-        <label class="form-label">Categoria</label>
-        <select asp-for="CategoriaId" class="form-control">
-            @foreach (var c in categorias)
-            {
-                <option value="@c.Id">@c.Nome</option>
-            }
-        </select>
-    </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Preço</label>
+                    <input asp-for="Preco" class="form-control" placeholder="Ex: 59.90" />
+                </div>
 
-    <button type="submit" class="btn btn-success">Salvar</button>
-    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
-</form>
+                <div class="col-md-6">
+                    <label class="form-label fw-semibold">Categoria</label>
+                    <select asp-for="CategoriaId" class="form-select">
+                        <option value="">-- selecione --</option>
+                        @foreach (var c in categorias)
+                        {
+                            <option value="@c.Id">@c.Nome</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2 mt-4">
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+                    <button class="btn btn-success px-4">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

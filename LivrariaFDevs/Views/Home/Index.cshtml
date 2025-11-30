@@ -1,8 +1,38 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Início - LivrariaFDevs";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <div class="col-md-7">
+            <h1 class="display-5 fw-bold">LivrariaFDevs</h1>
+            <p class="lead text-muted">Um sistema simples para gerenciar livros — crie, liste e organize sua coleção.</p>
+
+            <div class="mt-4">
+                <a asp-controller="Livros" asp-action="Index" class="btn btn-primary btn-lg me-2">
+                    📚 Ver Livros
+                </a>
+                <a asp-controller="Livros" asp-action="Create" class="btn btn-outline-primary btn-lg">
+                    ➕ Cadastrar Livro
+                </a>
+            </div>
+
+            <div class="mt-4 text-muted">
+                <small>Projeto de exemplo — .NET 9, EF Core (sem migrations)</small>
+            </div>
+        </div>
+
+        <div class="col-md-5 d-none d-md-block">
+            <div class="card shadow-sm">
+                <div class="card-body text-center py-5">
+                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" class="mb-3">
+                        <path d="M3 5h14v14H3z" stroke="#0d6efd" stroke-width="1.2" />
+                        <path d="M7 7h8v2H7z" fill="#0d6efd" />
+                    </svg>
+                    <h5 class="mb-0">Bem-vinda(o) à LivrariaFDevs</h5>
+                    <p class="small text-muted mt-2">Comece adicionando seu primeiro livro.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
